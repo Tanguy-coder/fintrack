@@ -10,10 +10,16 @@
 
                     </div>
                     <div class="ibox-content">
-                        <form method="POST" class="form-horizontal" action="{{ route('typeSorties.update',$typeSortie->id) }}" id="form">
+                        <form method="POST" class="form-horizontal" action="{{ route('users.update',$user->id) }}" >
                             @csrf
                             @method('PUT')
-                            <x-text-input label="libelle" name="libelle" status="success" required="true" value="{{ $typeSortie->libelle }}"/>
+                            <x-text-input label="Nom" name="nom" status="success" required="true" value="{{ $user->nom }}"/>
+                            <x-text-input label="Prénom" name="prenom" status="success" required="true" value="{{ $user->prenom }}"/>
+                            <x-text-input label="Email" name="email" status="success" required="true" type="email" value="{{ $user->email }}"/>
+                            <x-text-input label="Username" name="username" status="success" required="true" value="{{ $user->username }}"/>
+                            <x-text-input label="Contact" name="contact" status="success" required="true" value="{{ $user->contact }}"/>
+                            <x-input-select label="Rôle" name="role_id" :options="$roles->pluck('name', 'id')" :selected="$user->role->id" />
+                            <x-text-input label="Mot de pass" name="password" status="success"  type="password"/>
 
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
@@ -35,9 +41,9 @@
 @endsection
 
 @php
-    $title = 'Type dépense';
+    $title = 'Unités';
     $breadcrumb = [
         ['name' => 'App Views', 'url' => '#'],
-        ['name' => 'Editer Type dépénse', 'url' => '']
+        ['name' => 'Editer unité', 'url' => '']
     ];
 @endphp

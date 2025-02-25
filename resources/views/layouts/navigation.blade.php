@@ -9,7 +9,7 @@
     </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                <span class="m-r-sm text-muted welcome-message">Bienvenue {{ Auth::user()->nom. ' '.Auth::user()->prenom }} sur {{ config('app.name') }}</span>
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -64,7 +64,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
                 </a>
@@ -105,19 +105,22 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
 
             <li>
-                <a href="login.html">
-                    <i class="fa fa-sign-out"></i> Log out
+                <form method="POST" action="{{ route('logout') }}" style="display: none;" id="logout-form">
+                    @csrf
+                </form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
+                    Déconnexion
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a class="right-sidebar-toggle">
                     <i class="fa fa-tasks"></i>
                 </a>
-            </li>
+            </li> --}}
         </ul>
 
     </nav>

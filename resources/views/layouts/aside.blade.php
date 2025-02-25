@@ -10,23 +10,23 @@
                      </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="mailbox.html">Mailbox</a></li>
+
                         <li class="divider"></li>
-                        <li><a href="login.html">Logout</a></li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" style="display: none;" id="logout-form">
+                                @csrf
+                            </form>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
+                                Déconnexion
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="logo-element">
                     IN+
                 </div>
             </li>
-            <li class="inactive">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
-
-                </ul>
-            </li>
+            
             <li>
                 <a href="/"><i class="fa fa-diamond"></i> <span class="nav-label">Dashboard</span></a>
             </li>
@@ -38,6 +38,16 @@
             </li>
             <li>
                 <a href="/typeSorties"><i class="fa fa-diamond"></i> <span class="nav-label">Types Sorties</span></a>
+            </li>
+            <li>
+                <a href="/sorties"><i class="fa fa-diamond"></i> <span class="nav-label">Sortie</span></a>
+            </li>
+            <li class="inactive">
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Parametrages</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="active"><a href="/users">Utilisateurs</a></li>
+
+                </ul>
             </li>
 
         </ul>

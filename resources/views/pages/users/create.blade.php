@@ -6,15 +6,20 @@
             <div class="col-lg-10">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Edition de l'unité</small></h5>
+                        <h5>Enrégistrer une nouvelle sortie</small></h5>
 
                     </div>
                     <div class="ibox-content">
-                        <form method="POST" class="form-horizontal" action="{{ route('typeSorties.update',$typeSortie->id) }}" id="form">
+                        <form method="POST" class="form-horizontal" action="{{ route('users.store') }}" id="form">
                             @csrf
-                            @method('PUT')
-                            <x-text-input label="libelle" name="libelle" status="success" required="true" value="{{ $typeSortie->libelle }}"/>
-
+                            <x-text-input label="Nom" name="nom" status="success" required="true"/>
+                            <x-text-input label="Prénom" name="prenom" status="success" required="true"/>
+                            <x-text-input label="Email" name="email" status="success" required="true" type="email"/>
+                            <x-text-input label="Username" name="username" status="success" required="true"/>
+                            <x-text-input label="Contact" name="contact" status="success" required="true"/>
+                            <x-input-select label="Rôle" name="role_id" :options="$roles->pluck('name', 'id')" :selected="old('caisse_id')" />
+                            <x-text-input label="Mot de pass" name="password" status="success" required="true" type="password"/>
+                            
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
@@ -35,9 +40,9 @@
 @endsection
 
 @php
-    $title = 'Type dépense';
+    $title = 'Unités';
     $breadcrumb = [
         ['name' => 'App Views', 'url' => '#'],
-        ['name' => 'Editer Type dépénse', 'url' => '']
+        ['name' => 'Nouvelle unité', 'url' => '']
     ];
 @endphp

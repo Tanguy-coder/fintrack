@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Repositories\CaisseRepository;
 use App\Repositories\CaisseRepositoryInterface;
+use App\Repositories\SortieRepository;
+use App\Repositories\SortieRepositoryInterface;
 use App\Repositories\TypeSortieRepository;
 use App\Repositories\TypeSortieRepositoryInterface;
 use App\Repositories\UniteRepository;
 use App\Repositories\UniteRepositoryInterface;
+use App\Repositories\UserRepository;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(CaisseRepositoryInterface::class, CaisseRepository::class);
         $this->app->bind(TypeSortieRepositoryInterface::class, TypeSortieRepository::class);
+        $this->app->bind(SortieRepositoryInterface::class, SortieRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+
     }
 
     /**

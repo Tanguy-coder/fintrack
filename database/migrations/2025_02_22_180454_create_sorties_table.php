@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('libelle');
             $table->foreignId('type_sortie_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('caisse_id')->constrained();
             $table->datetime('date');
             $table->float('montant');
             $table->timestamps();
