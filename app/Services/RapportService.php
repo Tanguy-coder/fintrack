@@ -19,20 +19,7 @@ class RapportService
     public function genererRapportEntreDates(string $dateDebut, string $dateFin, ?int $typeDepenseId = null): Collection
     {
         return $depensesParType = $this->rapportRepository->getDepensesParTypeEntreDates($dateDebut, $dateFin, $typeDepenseId);
-
-        // $rapport = [];
-        // foreach ($depensesParType as $typeId => $depenses) {
-        //     $typeNom = $depenses->first()->typeSortie->libelle ?? 'Inconnu';
-        //     $montantTotal = $depenses->sum('montant');
-
-        //     $rapport[] = [
-        //         'type_depense' => $typeNom,
-        //         'total' => $montantTotal,
-        //         'nombre' => $depenses->count(),
-        //     ];
-        // }
-
-        // return $rapport;
+        
     }
 
 }

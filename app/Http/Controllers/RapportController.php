@@ -27,8 +27,10 @@ class RapportController extends Controller
     {
         // dd($request->all());
         $dateDebut = date('Y-m-d',strtotime($request->input('date_debut')));
-        $dateFin = date('Y-m-d',strtotime($request->input('date_fin')));;
-        $typesortieId = $request->input('type_sortie_id');
+        $dateFin = \Carbon\Carbon::createFromFormat('d/m/Y', $request->input('date_fin'))->format('Y-m-d');
+        $typesortieId = $request->input('type_depense_id');
+
+        // dd($dateDebut, $dateFin, $typesortieId);
 
         $sorties = $this->rapportService->genererRapportEntreDates($dateDebut, $dateFin, $typesortieId);
 

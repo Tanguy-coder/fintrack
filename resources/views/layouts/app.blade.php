@@ -63,7 +63,7 @@
                 </div>
                 <div class="footer">
                     <div class="pull-right">
-                        +228 90710906/ 99286048 <strong>dtdev.tg@gmail.com</strong> 
+                        +228 90710906/ 99286048 <strong>dtdev.tg@gmail.com</strong>
                     </div>
                     <div>
                         <strong>Copyright</strong> DTDEV &copy; 2019-{{ now()->year }}
@@ -243,7 +243,7 @@
                     showMethod: 'slideDown',
                     timeOut: 4000
                 };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+                toastr.success('Bonjour', 'Bienvenue sur FINTRACK');
 
             }, 1300);
 

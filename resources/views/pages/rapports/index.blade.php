@@ -46,7 +46,12 @@
     <div class="col-lg-12">
         <div class="ibox">
             <div class="ibox-content">
-                <table class="table table-striped table-bordered table-hover dataTables-example" data-page-size="15">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4>Total des dépenses : <span id="totalDepenses">0.00 FCFA</span></h4>
+                    </div>
+                </div>
+                <table id="depensesTable" class="table table-striped table-bordered table-hover dataTables-example" data-page-size="15">
                     <thead>
                         <tr>
                             <th>Libelle</th>
@@ -80,21 +85,68 @@
 @section('extra-scripts')
 <script>
 $(document).ready(function () {
-    console.log("Document ready");
-    function loadDepenses() {
-        console.log("loadDepenses called");
+    // Initialiser DataTables
+    var table = $('#depensesTable').DataTable({
+        pageLength: 10,
+        responsive: true,
+        dom: '<"html5buttons"B>lTfgitp',
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/French.json'
+        },
+        buttons: [
+            { extend: 'copy', text: 'Copier' },
+            { extend: 'csv' },
+            {
+                extend: 'excel',
+                title: 'Liste des dépenses',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5,6 ]
+                }
+            },
+            {
+                extend: 'pdf',
+                title: 'Liste des dépenses',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                }
+            },
+            {
+                extend: 'print',
+                text: 'Imprimer',
+                customize: function (win){
+                    $(win.document.body).addClass('white-bg');
+                    $(win.document.body).css('font-size', '10px');
+                    $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                }
+            }
+        ]
+    });
 
+    // Initialiser le datepicker
+    $('.input-group.date').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true,
+        language: 'fr'
+    });
+
+    function loadDepenses() {
         let dateDebut = $('#date_added').val().trim();
         let dateFin = $('#date_modified').val().trim();
         let typeDepenseId = $('#type_sortie_id').val();
 
         if (!dateDebut || !dateFin) {
-            console.error("Missing required fields");
+            toastr.warning('Veuillez sélectionner les dates');
             return;
         }
 
         $("#loader").show();
-        $("#depensesTableBody").html("");
+        table.clear();
 
         $.ajax({
             url: "{{ url('/api/depenses') }}",
@@ -105,43 +157,41 @@ $(document).ready(function () {
                 type_depense_id: typeDepenseId
             },
             success: function (response) {
-                console.log("AJAX success", response);
+                let totalDepenses = 0;
 
-                let rows = "";
                 if (response.length > 0) {
                     response.forEach(depense => {
-                        rows += `
-                            <tr>
-                                <td>${depense.libelle}</td>
-                                <td>${depense.montant.toFixed(2)} €</td>
-                                <td>${depense.date}</td>
-                                <td>${depense.type_sortie.libelle}</td>
-                                <td>${depense.caisse.libelle}</td>
-                                <td>${depense.auteur}</td>
-                            </tr>
-                        `;
+                        totalDepenses += parseFloat(depense.montant);
+                        table.row.add([
+                            depense.libelle,
+                            depense.montant.toFixed(2),
+                            new Date(depense.date).toLocaleDateString('fr-FR'),
+                            depense.type_sortie.libelle,
+                            depense.caisse.libelle,
+                            depense.user.nom
+                        ]);
                     });
-                } else {
-                    rows = `<tr><td colspan="6" class="text-center">Aucune dépense trouvée</td></tr>`;
                 }
-                $("#depensesTableBody").html(rows);
+
+                table.draw();
+                $("#totalDepenses").text(totalDepenses.toFixed(2) + " €");
                 $("#loader").hide();
             },
             error: function (xhr) {
                 console.error("AJAX error", xhr.responseText);
-                $("#depensesTableBody").html(`<tr><td colspan="6" class="text-center text-danger">Erreur lors du chargement des données</td></tr>`);
+                toastr.error('Erreur lors du chargement des données');
                 $("#loader").hide();
             }
         });
     }
 
     $("#filterForm").submit(function (e) {
-        e.preventDefault();  // Cette ligne empêche le rafraîchissement de la page
-        console.log("Form submitted");
-        loadDepenses();  // Charge les données sans recharger la page
+        e.preventDefault();
+        loadDepenses();
     });
 
-    loadDepenses();  // Chargement initial des données
+    // Chargement initial des données
+    loadDepenses();
 });
 </script>
 @endsection
