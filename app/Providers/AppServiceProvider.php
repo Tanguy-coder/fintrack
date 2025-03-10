@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\CaisseRepository;
 use App\Repositories\CaisseRepositoryInterface;
+use App\Repositories\RapportRepository;
+use App\Repositories\RapportRepositoryInterface;
 use App\Repositories\SortieRepository;
 use App\Repositories\SortieRepositoryInterface;
 use App\Repositories\TypeSortieRepository;
@@ -29,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TypeSortieRepositoryInterface::class, TypeSortieRepository::class);
         $this->app->bind(SortieRepositoryInterface::class, SortieRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(RapportRepositoryInterface::class, RapportRepository::class);
 
     }
 

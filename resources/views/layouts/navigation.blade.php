@@ -9,9 +9,9 @@
     </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">Bienvenue {{ Auth::user()->nom. ' '.Auth::user()->prenom }} sur {{ config('app.name') }}</span>
+                <span class="m-r-sm text-muted welcome-message">Bienvenue <b  class="text-success">{{ Auth::user()->nom. ' '.Auth::user()->prenom }} </b> sur {{ config('app.name') }}</span>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
                 </a>
@@ -63,7 +63,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             {{-- <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
@@ -112,7 +112,7 @@
                 <form method="POST" action="{{ route('logout') }}" style="display: none;" id="logout-form">
                     @csrf
                 </form>
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-bg-success" >
                     Déconnexion
                 </a>
             </li>

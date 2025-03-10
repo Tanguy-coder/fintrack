@@ -4,8 +4,8 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <div class="float-right">
-            <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs ">
+        <div class="float-right mb-1">
+            <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs pull-right">
                 <li class="fa fa-plus"></li> Ajouter
             </a>
         </div>

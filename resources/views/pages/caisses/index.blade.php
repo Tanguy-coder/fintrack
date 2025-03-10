@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="float-right">
-            <a href="{{ route('caisses.create') }}" class="btn btn-primary btn-xs ">
+            <a href="{{ route('caisses.create') }}" class="btn btn-primary btn-xs pull-right">
                 <li class="fa fa-plus"></li> Ajouter
             </a>
         </div>
