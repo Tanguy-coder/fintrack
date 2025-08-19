@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Gateway;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;

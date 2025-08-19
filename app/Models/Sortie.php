@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sortie extends Model
 {
     use HasFactory;
-    protected $fillable = ['libelle', 'type_sortie_id', 'user_id', 'caisse_id', 'date', 'montant'];
+    protected $fillable = ['libelle', 'type_sortie_id', 'user_id', 'caisse_id', 'date', 'montant','type_operation'];
 
     public function typeSortie()
     {
@@ -22,5 +22,7 @@ class Sortie extends Model
     {
         return $this->belongsTo(Caisse::class);
     }
+
+    
 
 }

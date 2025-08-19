@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Gateway\CaisseRepositoryInterface;
 use App\Models\Caisse;
 
 class CaisseRepository implements CaisseRepositoryInterface

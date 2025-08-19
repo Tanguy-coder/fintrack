@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\CaisseRepositoryInterface;
+use App\Gateway\CaisseRepositoryInterface;
 
 class CaisseService
 {

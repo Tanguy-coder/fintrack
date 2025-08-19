@@ -113,8 +113,8 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-3">
-                                        <a href="#" class="btn btn-secondary btn-block">
-                                            <i class="fa fa-plus"></i> Ajouter une entrée
+                                        <a href="{{ route('salaires.index') }}" class="btn btn-secondary btn-block">
+                                            <i class="fa fa-plus"></i> Gérer les salaires
                                         </a>
                                     </div>
                                 </div>

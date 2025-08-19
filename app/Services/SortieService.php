@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
+use App\Gateway\SortieRepositoryInterface;
 use App\Models\Sortie;
-use App\Repositories\SortieRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class SortieService
@@ -38,6 +38,18 @@ class SortieService
         return [
             'typesSortie' => $this->sortieRepository->getAllTypesSortie(),
             'caisses' => $this->sortieRepository->getAllCaisses(),
+            'operation' => collect([
+                ['id' => 1, 'libelle' => 'ENTREE'],
+                ['id' => 2, 'libelle' => 'DEPENSE'],
+
+            ])->map(function ($item) {
+                return (object) $item;
+            })->toArray()
         ];
+    }
+
+    public function updateSortie(int $id, array $data): Sortie
+    {
+        return $this->sortieRepository->update($id, $data);
     }
 }

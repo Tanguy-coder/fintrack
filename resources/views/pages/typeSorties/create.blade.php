@@ -12,8 +12,9 @@
                     <div class="ibox-content">
                         <form method="Post" class="form-horizontal" action="{{ route('typeSorties.store') }}" id="form">
                             @csrf
-                            <x-text-input label="libelle" name="libelle" status="success" required="true"/>
-
+                            <x-text-input label="N° Compte" name="numero_compte" status="success" :required="true"/>
+                            <x-text-input label="libelle" name="libelle" status="success" :required="true"/>
+                            <x-input-select label="Type d'operation" id="operation" name="type" :options="$operation" :displayField="['libelle']" :selected="old('type_operation')" :required="true" />
 
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
@@ -41,3 +42,17 @@
         ['name' => 'Nouvelle unité', 'url' => '']
     ];
 @endphp
+
+@section('extra-scripts')
+<script>
+$(document).ready(function () {
+    // Initialize Chosen for all selects with the class
+    if ($('.chosen-select').length) {
+        $('.chosen-select').chosen({
+            width: "100%",
+            no_results_text: "Aucun résultat trouvé"
+        });
+    }
+});
+</script>
+@endsection

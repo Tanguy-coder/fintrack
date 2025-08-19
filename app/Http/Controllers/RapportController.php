@@ -25,17 +25,46 @@ class RapportController extends Controller
 
     public function getDepensesJson(Request $request)
     {
-        // dd($request->all());
-        $dateDebut = date('Y-m-d',strtotime($request->input('date_debut')));
+        $dateDebut = \Carbon\Carbon::createFromFormat('d/m/Y', $request->input('date_debut'))->format('Y-m-d');
         $dateFin = \Carbon\Carbon::createFromFormat('d/m/Y', $request->input('date_fin'))->format('Y-m-d');
+
         $typesortieId = $request->input('type_depense_id');
-
-        // dd($dateDebut, $dateFin, $typesortieId);
-
         $sorties = $this->rapportService->genererRapportEntreDates($dateDebut, $dateFin, $typesortieId);
 
-        // dd($sorties);
         return response()->json($sorties);
+    }
 
+    public function getSalairesJson(Request $request)
+    {
+        $dateDebut = \Carbon\Carbon::createFromFormat('d/m/Y', $request->input('date_debut'))->format('Y-m-d');
+        $dateFin = \Carbon\Carbon::createFromFormat('d/m/Y', $request->input('date_fin'))->format('Y-m-d');
+
+        $salaires = $this->rapportService->getSalairesBetweenDates($dateDebut, $dateFin);
+
+        return response()->json($salaires);
+    }
+
+    public function rapportGeneral()
+    {
+        // dd('ok');
+        $types = $this->rapportService->getRapportPageData();
+        return view('pages.rapports.general', compact('types'));
+    }
+
+    public function genererRapport(Request $request)
+    {
+        // dd($request->all());
+        $types = $request->input('types', []);
+        $dateDebut = $request->input('from_date');
+        $dateFin = $request->input('to_date');
+
+        $datas = $this->rapportService->getDatasBetweenDates($types, $dateDebut, $dateFin);
+        // dd($datas);
+
+        return view('pages.rapports.result',[
+                'depenses' => $datas->get('depenses'),
+                'entrees'  => $datas->get('entrees'),
+                'salaires' => $datas->get('salaires'),
+            ]);
     }
 }

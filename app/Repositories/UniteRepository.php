@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Gateway\UniteRepositoryInterface;
 use App\Models\Unite;
 
 class UniteRepository implements UniteRepositoryInterface

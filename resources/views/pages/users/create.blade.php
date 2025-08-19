@@ -6,7 +6,7 @@
             <div class="col-lg-10">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Enrégistrer une nouvelle sortie</small></h5>
+                        <h5>Enrégistrer un nouvel utilisateur</small></h5>
 
                     </div>
                     <div class="ibox-content">
@@ -19,7 +19,7 @@
                             <x-text-input label="Contact" name="contact" status="success" required="true"/>
                             <x-input-select label="Rôle" name="role_id" :options="$roles->pluck('name', 'id')" :selected="old('caisse_id')" />
                             <x-text-input label="Mot de pass" name="password" status="success" required="true" type="password"/>
-                            
+
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">

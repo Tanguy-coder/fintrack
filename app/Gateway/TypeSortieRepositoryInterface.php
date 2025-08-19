@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Gateway;
 
 interface TypeSortieRepositoryInterface
 {
@@ -9,4 +9,5 @@ interface TypeSortieRepositoryInterface
     public function create($typeSortie);
     public function delete($id);
     public function update($id, $typeSortie);
+    public function getOperationByType($type);
 }

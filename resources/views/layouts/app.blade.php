@@ -59,6 +59,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content">
+
                     @yield('content')
                 </div>
                 <div class="footer">
@@ -236,16 +237,16 @@
 
     <script>
         $(document).ready(function() {
-            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Bonjour', 'Bienvenue sur FINTRACK');
+            // setTimeout(function() {
+            //     toastr.options = {
+            //         closeButton: true,
+            //         progressBar: true,
+            //         showMethod: 'slideDown',
+            //         timeOut: 4000
+            //     };
+            //     toastr.success('Bonjour', 'Bienvenue sur FINTRACK');
 
-            }, 1300);
+            // }, 1300);
 
 
             var data1 = [
@@ -602,6 +603,7 @@
                 $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             });
 
+            $("#select2_demo_1").select2();
             $(".select2_demo_1").select2();
             $(".select2_demo_2").select2();
             $(".select2_demo_3").select2({
@@ -640,7 +642,7 @@
 
         });
 
-        $('.chosen-select').chosen({width: "100%"});
+
 
         $("#ionrange_1").ionRangeSlider({
             min: 0,
@@ -760,6 +762,17 @@
 
             <!-- FooTable -->
     <script src="{{ asset('js/plugins/footable/footable.all.min.js') }}"></script>
+    @if(session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif
+
+    @if(session('error'))
+        <script>
+            toastr.error("{{ session('error') }}");
+        </script>
+    @endif
 
     @yield('extra-scripts')
 </body>

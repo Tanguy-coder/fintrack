@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('caisse_id')->constrained();
             $table->datetime('date');
             $table->float('montant');
+            $table->integer('type_operation');
             $table->timestamps();
         });
     }

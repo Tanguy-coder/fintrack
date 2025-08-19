@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\TypeSortieRepositoryInterface;
+use App\Gateway\TypeSortieRepositoryInterface;
 
 class TypeSortieService
 {
@@ -24,6 +24,17 @@ class TypeSortieService
     {
         return $this->typeSortie->findById($id);
     }
+
+     public function getCreatePageData()
+    {
+            return collect([
+            ['id' => 1, 'libelle' => 'ENTREE'],
+            ['id' => 2, 'libelle' => 'DEPENSE'],
+        ])->map(function ($item) {
+            return (object) $item;
+        });
+
+    }
     public function createTypeSortie($data)
     {
         return $this->typeSortie->create($data);
@@ -35,6 +46,11 @@ class TypeSortieService
     public function deleteTypeSortie($id)
     {
         return $this->typeSortie->delete($id);
+    }
+
+    public function getOperationByType($type)
+    {
+        return $this->typeSortie->getOperationByType($type);
     }
 
 }

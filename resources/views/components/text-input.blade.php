@@ -1,10 +1,10 @@
 @props([
     'disabled' => false,
     'label' => '',
-    'status' => 'success',
+    'status' => '',
     'name' => '',
     'value' => '',
-    'required' => false,
+    'required' => true,
     'type' => 'text'
 ])
 
@@ -18,25 +18,34 @@
 
     $errorClass = $errors->has($name) ? 'is-invalid has-danger' : '';
 
+    // garde la valeur précédente si erreur
     $inputValue = old($name, $value);
 @endphp
+
 @if($type === 'hidden')
-    <input type="hidden" name="{{ $name }}" value="{{ $value }}">
+    <input type="hidden" name="{{ $name }}" value="{{ $inputValue }}">
 @else
-<div class="form-group  {{ $errorClass }}">
-    <label class="col-sm-2 control-label">{{ $label }}</label>
+<div class="form-group {{ $statusClass }} {{ $errorClass }}">
+    @if($label)
+        <label for="{{ $name }}" class="col-sm-2 control-label">
+            {{ $label }}
+            @if($required) <span class="text-danger">*</span> @endif
+        </label>
+    @endif
+
     <div class="col-sm-10">
         <input
             type="{{ $type }}"
-            class="form-control {{ $errorClass }} {{ $statusClass }}"
+            id="{{ $name }}"
             name="{{ $name }}"
             value="{{ $inputValue }}"
+            class="form-control {{ $errorClass }}"
             {{ $required ? 'required' : '' }}
             {{ $disabled ? 'disabled' : '' }}
         >
 
         @error($name)
-            <div class="invalid-feedback text-danger">
+            <div class="invalid-feedback text-danger d-block">
                 {{ $message }}
             </div>
         @enderror

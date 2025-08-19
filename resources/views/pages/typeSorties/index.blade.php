@@ -20,13 +20,17 @@
         <thead>
         <tr>
             <th>Libellé</th>
+            <th>Numero de compte</th>
+            <th>Type</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         @foreach ($typeSorties as $typeSortie)
         <tr class="gradeX">
+            <td>{{ $typeSortie->numero_compte }}</td>
             <td>{{ $typeSortie->libelle }}</td>
+            <td>{{ $typeSortie->type == 1 ? "ENTREE" : "DEPENSE" }}</td>
             </td>
             <td class="center">
                     <a href="{{ route('typeSorties.edit', $typeSortie->id) }}" class="btn btn-primary btn-xs">

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Gateway\TypeSortieRepositoryInterface;
 use App\Models\TypeSortie;
 
 class TypeSortieRepository implements TypeSortieRepositoryInterface
@@ -38,4 +39,9 @@ class TypeSortieRepository implements TypeSortieRepositoryInterface
         return TypeSortie::destroy($id);
     }
 
+    public function getOperationByType($type)
+    {
+        // dd($type);
+       return TypeSortie::where('type', $type)->get();
+    }
 }

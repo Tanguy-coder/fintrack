@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Gateway\SortieRepositoryInterface;
 use App\Models\Caisse;
 use App\Models\Sortie;
 use App\Models\TypeSortie;
@@ -29,6 +30,7 @@ class SortieRepository implements SortieRepositoryInterface
 
     public function create(array $data): Sortie
     {
+        // dd($data);
         return Sortie::create($data);
     }
 
@@ -40,5 +42,12 @@ class SortieRepository implements SortieRepositoryInterface
     public function getAllCaisses(): Collection
     {
         return Caisse::all();
+    }
+
+    public function update(int $id, array $data): Sortie
+    {
+        $sortie = Sortie::findOrFail($id);
+        $sortie->update($data);
+        return $sortie;
     }
 }

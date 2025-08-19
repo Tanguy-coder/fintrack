@@ -21,7 +21,13 @@ class TypeSortieController extends Controller
 
     public function create()
     {
-        return view('pages.typeSorties.create');
+        $operation = $this->typeSortieService->getCreatePageData();
+        return view('pages.typeSorties.create', compact('operation'));
+    }
+
+    public function getTypeSorties($type)
+    {
+        return response()->json($this->typeSortieService->getOperationByType($type));
     }
 
     public function store(Request $request)
@@ -32,7 +38,8 @@ class TypeSortieController extends Controller
     public function edit($id)
     {
         $typeSortie = $this->typeSortieService->getTypeSortieById($id);
-        return view('pages.typeSorties.edit', compact('typeSortie'));
+        $operation = $this->typeSortieService->getCreatePageData();
+        return view('pages.typeSorties.edit', compact('typeSortie', 'operation'));
     }
     public function update(Request $request, $id)
     {

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\UniteRepositoryInterface;
+use App\Gateway\UniteRepositoryInterface;
 
 class UniteService
 {
