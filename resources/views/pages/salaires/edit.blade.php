@@ -10,7 +10,7 @@
 
                     </div>
                     <div class="ibox-content">
-                        <form method="POST" class="form-horizontal" action="{{ route('employes.update',$employe->id) }}" >
+                        <form method="POST" class="form-horizontal" action="{{ route('salaires.update',$employe->id) }}" >
                             @csrf
                             @method('PUT')
                             <x-text-input label="Nom" name="nom" status="success" required="true" value="{{ $employe->nom }}"/>

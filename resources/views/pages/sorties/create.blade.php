@@ -52,7 +52,6 @@
 @section('extra-scripts')
 <script>
 $(document).ready(function () {
-    alert('test');
     // Initialize Chosen for all selects with the class
     if ($('.chosen-select').length) {
         $('.chosen-select').chosen({

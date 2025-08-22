@@ -17,7 +17,7 @@
                             <x-text-input label="Email" name="email" status="success" required="true" type="email"/>
                             <x-text-input label="Username" name="username" status="success" required="true"/>
                             <x-text-input label="Contact" name="contact" status="success" required="true"/>
-                            <x-input-select label="Rôle" name="role_id" :options="$roles->pluck('name', 'id')" :selected="old('caisse_id')" />
+                            <x-input-select label="Rôle" name="role_id" :options="$roles" :displayField="['name']" :selected="old('role_id')" />
                             <x-text-input label="Mot de pass" name="password" status="success" required="true" type="password"/>
 
                             <div class="hr-line-dashed"></div>

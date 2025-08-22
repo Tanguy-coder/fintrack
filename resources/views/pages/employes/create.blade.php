@@ -19,7 +19,6 @@
                             <x-text-input label="Téléphone" name="telephone" type="tel" status="success" required="true"/>
                             <x-text-input label="Poste" name="poste" status="success" required="true"/>
                             <x-text-input label="Salaire" name="salaire" status="success" required="true" type="number"/>
-
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">

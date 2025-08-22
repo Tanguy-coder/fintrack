@@ -6,10 +6,11 @@ use App\Models\Sortie;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class LicenceController extends Controller
 {
-    public function index(){
-        // Récupération des données pour la page d'accueil
+    public function index()
+    {
+         // Récupération des données pour la page d'accueil
         $depAuj = Sortie::whereDate('date', now())->sum('montant');
         $depMois = Sortie::whereMonth('date', now())->sum('montant');
         $depAnnee = Sortie::whereYear('date', now())->sum('montant');
@@ -26,4 +27,5 @@ class MainController extends Controller
         }
         return view('welcome', compact('depAuj', 'depMois', 'depAnnee', 'depTotal','chartLabels', 'chartDepenseData', 'chartRecetteData'));
     }
+
 }

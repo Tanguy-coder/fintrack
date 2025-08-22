@@ -33,6 +33,7 @@ class EmployeController extends Controller
     }
 
     public function update($id, Request $request){
+        // dd($request->all());
         $employe = $this->service->updateEmploye($id, $request->all());
         return redirect()->route('employes.index');
     }

@@ -11,7 +11,7 @@
         </div>
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Liste des unités</h5>
+            <h5>Liste des Utilisateurs</h5>
         </div>
         <div class="ibox-content">
 
@@ -36,7 +36,7 @@
             <td>{{ $user->username }}
             <td>{{ $user->role->name }}
             <td>{{ $user->contact }}
-            <td>f</td>
+            <td>Actif</td>
             <td class="center">
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-xs">
                         <li class="fa fa-edit"></li>
@@ -57,10 +57,10 @@
 @endsection
 
 @php
-    $title = 'Dashboard';
+    $title = 'Utilisateurs';
     $breadcrumb = [
         ['name' => 'App Views', 'url' => '#'],
-        ['name' => 'Dépenses', 'url' => '']
+        ['name' => 'Utilisateurs', 'url' => '']
     ];
 @endphp
 

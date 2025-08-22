@@ -16,7 +16,7 @@
                             <x-text-input label="nom" name="nom" status="success" required="true" value="{{ $assurance->nom }}"/>
                             <x-text-input label="Taux employé" name="rate_employe" status="success" required="true" value="{{ $assurance->rate_employe }}"/>
                             <x-text-input label="Taux employeur" name="rate_employeur" status="success" required="true" value="{{ $assurance->rate_employeur }}"/>
-                            <x-text-input label="description" name="description" status="success" required="true" value="{{ $assurance->description }}"/>
+                            <x-text-input label="description" name="description" status="success" :required="false" value="{{ $assurance->description }}"/>
 
 
                             <div class="hr-line-dashed"></div>

@@ -38,7 +38,7 @@
             <td>{{ $employe->telephone }}
             <td>{{ $employe->poste }}
             <td>{{ $employe->salaire }}
-            <td>{{ $employe->etat = true ? 'Actif' : 'inactif'}}
+            <td>{{ $employe->getEmployeStatusAttribute() }}</td>
             <td class="center">
                     <a href="{{ route('employes.edit', $employe->id) }}" class="btn btn-primary btn-xs">
                         <li class="fa fa-edit"></li>

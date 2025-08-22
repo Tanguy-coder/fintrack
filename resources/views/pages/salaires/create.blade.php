@@ -62,6 +62,7 @@
                                 label="Référence du paiement"
                                 name="reference_paiement"
                                 status="success"
+                                :required="false"
                             />
 
                             <x-text-area-input

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssuranceController;
 use App\Http\Controllers\CaisseController;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\LicenceController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RapportController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('login');
 });
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','licence')->group(function () {
     Route::get('/home', [MainController::class,'index'])->name('home');
     Route::resources([
         'unites' => UniteController::class,
@@ -45,5 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('licence',[LicenceController::class,'index'])->name('licence');
 
 require __DIR__.'/auth.php';

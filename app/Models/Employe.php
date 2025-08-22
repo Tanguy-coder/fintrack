@@ -15,6 +15,7 @@ class Employe extends Model
         'poste',
         'actif',
         'salaire',
+        'actif'
     ];
 
     /**
@@ -30,6 +31,19 @@ class Employe extends Model
     public function scopeActive($query)
     {
         return $query->where('actif', true);
+    }
+
+    /**
+     * Scope a query to only include inactive employees.
+     */
+    public function scopeInactive($query)
+    {
+        return $query->where('actif', false);
+    }
+
+    public function getEmployeStatusAttribute(): string
+    {
+        return $this->actif ? 'Actif' : 'Inactif';
     }
 
 }

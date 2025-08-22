@@ -40,7 +40,7 @@
                 <a href="/typeSorties"><i class="fa fa-paperclip"></i> <span class="nav-label">Types Sorties</span></a>
             </li> --}}
             <li>
-                <a href="/sorties"><i class="fa fa-arrow-left"></i> <span class="nav-label">Operation</span></a>
+                <a href="/sorties"><i class="fa fa-circle-o-notch"></i> <span class="nav-label">Operation</span></a>
             </li>
             <li>
                 <a href="/employes"><i class="fa fa-users"></i> <span class="nav-label">Employés</span></a>

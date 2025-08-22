@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Tableau de bord')
+
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -138,30 +140,27 @@ $(document).ready(function () {
         type: 'bar',
         data: {
             labels: {!! json_encode($chartLabels) !!},
-            datasets: [{
-                label: 'Dépenses par mois',
-                data: {!! json_encode($chartData) !!},
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                fill: true
-            }]
+            datasets: [
+                {
+                    label: 'Dépenses',
+                    data: {!! json_encode($chartDepenseData) !!},
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Recettes',
+                    data: {!! json_encode($chartRecetteData) !!},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
         },
         options: {
-            responsive: true,
             scales: {
-                x: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: 'Mois'
-                    }
-                },
                 y: {
-                    display: true,
-                    title: {
-                        display: true,
-                        text: 'Montant (FCFA)'
-                    }
+                    beginAtZero: true
                 }
             }
         }

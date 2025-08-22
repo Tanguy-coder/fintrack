@@ -6,7 +6,7 @@
             <div class="col-lg-10">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Enrégistrer une nouvelle caisse</small></h5>
+                        <h5>Enrégistrer un nouveau type d'opération</small></h5>
 
                     </div>
                     <div class="ibox-content">
@@ -14,7 +14,7 @@
                             @csrf
                             <x-text-input label="N° Compte" name="numero_compte" status="success" :required="true"/>
                             <x-text-input label="libelle" name="libelle" status="success" :required="true"/>
-                            <x-input-select label="Type d'operation" id="operation" name="type" :options="$operation" :displayField="['libelle']" :selected="old('type_operation')" :required="true" />
+                            <x-input-select label="Type d'operation" id="operation" name="type" :options="$operation" :required="true" :displayField="['libelle']" :selected="old('type_operation')" :required="true" />
 
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
@@ -36,10 +36,10 @@
 @endsection
 
 @php
-    $title = 'Unités';
+    $title = 'Type oéparation';
     $breadcrumb = [
         ['name' => 'App Views', 'url' => '#'],
-        ['name' => 'Nouvelle unité', 'url' => '']
+        ['name' => 'Type opération', 'url' => '']
     ];
 @endphp
 

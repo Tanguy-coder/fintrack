@@ -15,7 +15,7 @@
                             <x-text-input label="Nom" name="nom" status="success" required="true"/>
                             <x-text-input label="Taux employé" name="rate_employe" status="success" required="true"/>
                             <x-text-input label="Taux employeur" name="rate_employeur" sta   tus="success" required="true"/>
-                            <x-text-input label="Description" name="description" status="success" required="true"/>"
+                            <x-text-input label="Description" name="description" status="success" :required="false"/>"
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
