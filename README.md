@@ -168,7 +168,7 @@ Avant d'installer FinTrack, assurez-vous d'avoir :
 ### 1. Cloner le repository
 
 ```bash
-git clone https://github.com/votre-username/fintrack.git
+git clone https://github.com/tanguy-coder/fintrack.git
 cd fintrack
 ```
 
