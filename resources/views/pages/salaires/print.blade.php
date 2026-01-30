@@ -101,12 +101,12 @@
       <div class="org-name">{{ $organisation->nom ?? 'COLLEGE ADELE' }}</div>
       <div class="org-sub">
         BP : {{ $organisation->bp ?? '788 Kara' }}<br>
-        Tel : {{ $organisation->tel ?? 'Bur: (+228) 26 60 06 18 Dom : 26 60 60 24' }} <br>
+        Tel : {{ $organisation->tel ?? 'Bur: (+228) 92168217' }} <br>
         Email : {{ $organisation->adresse ?? 'college.adele@yahoo.com' }}
       </div>
     </div>
     <div class="logo">
-        <img src="{{ asset('img/1.png') }}" alt="Logo" style="max-width:100%; max-height:100%;" />
+        <img src="{{ asset('img/Tel .png') }}" alt="Logo" style="max-width:100%; max-height:100%;" />
     </div>
   </div>
 
@@ -189,7 +189,7 @@
 {{-- <div class="actions no-print">
   <button onclick="window.print()">Imprimer</button>
 </div> --}}
-{{-- <script>
+<script>
   window.addEventListener('load', function() {
       // Lancer l'impression automatiquement
       window.print();
@@ -198,7 +198,7 @@
       window.onafterprint = function() {
           window.location.href = "{{ route('salaires.index') }}";
       };
-  }); --}}
+  });
 </script>
 </body>
 </html>

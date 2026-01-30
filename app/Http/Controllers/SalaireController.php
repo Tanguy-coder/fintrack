@@ -33,6 +33,7 @@ class SalaireController extends Controller
 
    public function store(Request $request)
 {
+    // dd($request->all());
     $request['mois'] = \Carbon\Carbon::parse($request->mois)->format('Y-m-d');
 
     $existingSalaire = Salaire::where('mois', $request->mois)->first();

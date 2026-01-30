@@ -11,6 +11,8 @@
                         <h5>Résultats du Rapport</h5>
                     </div>
                     <div class="ibox-content">
+                        <p class="text-center" id="report-period">Période du rapport : du <strong>{{ \Carbon\Carbon::parse($dateDebut)->format('d/m/Y') }}</strong> au <strong>{{ \Carbon\Carbon::parse($dateFin)->format('d/m/Y') }}</strong></p>
+
                         @if(isset($depenses) && $depenses->isNotEmpty())
                             <div class="table-responsive" id="table-depenses">
                                 <h3 class="text-center">Dépenses</h3>
@@ -81,6 +83,37 @@
                             </div>
                         @endif
 
+                        @if(isset($totalDepenses) || isset($totalEntrees))
+                            <div class="table-responsive" id="table-balance">
+                                <h3 class="text-center">Balance Générale</h3>
+                                <button class="btn btn-primary btn-sm pull-right print-table" data-table="table-balance">
+                                    <i class="fa fa-print"></i> Imprimer
+                                </button>
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Montant</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Total des Entrées</td>
+                                        <td>{{ number_format($totalEntrees, 2, ',', ' ') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total des Dépenses</td>
+                                        <td>{{ number_format($totalDepenses, 2, ',', ' ') }}</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td><strong>Balance</strong></td>
+                                        <td><strong>{{ number_format($balance, 2, ',', ' ') }}</strong></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+
                         @if(isset($salaires) && $salaires->isNotEmpty())
                             <div class="table-responsive" id="table-salaires">
                                 <h3 class="text-center">Salaires</h3>
@@ -138,6 +171,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         const printButtons = document.querySelectorAll('.print-table');
         const bootstrapCss = "{{ asset('css/bootstrap.css') }}"; // évalué par Blade
+        const reportPeriodElement = document.getElementById('report-period');
+        const reportPeriodText = reportPeriodElement ? reportPeriodElement.outerHTML : '';
 
         printButtons.forEach(button => {
             button.addEventListener('click', function () {
@@ -154,6 +189,7 @@
                     newWin.document.write('<style>body{padding:20px;}</style>');
                     newWin.document.write('</head><body>');
                     newWin.document.write('<h2>' + title + '</h2>');
+                    newWin.document.write(reportPeriodText); // Add the report period here
                     newWin.document.write(tableToPrint.outerHTML);
                     newWin.document.write('</body></html>');
 

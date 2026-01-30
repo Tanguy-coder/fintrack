@@ -61,10 +61,23 @@ class RapportController extends Controller
         $datas = $this->rapportService->getDatasBetweenDates($types, $dateDebut, $dateFin);
         // dd($datas);
 
+        $depenses = $datas->get('depenses');
+        $entrees = $datas->get('entrees');
+        $salaires = $datas->get('salaires');
+
+        $totalDepenses = $depenses->sum('montant');
+        $totalEntrees = $entrees->sum('montant');
+        $balance = $totalEntrees - $totalDepenses;
+
         return view('pages.rapports.result',[
-                'depenses' => $datas->get('depenses'),
-                'entrees'  => $datas->get('entrees'),
-                'salaires' => $datas->get('salaires'),
+                'depenses' => $depenses,
+                'entrees'  => $entrees,
+                'salaires' => $salaires,
+                'totalDepenses' => $totalDepenses,
+                'totalEntrees'  => $totalEntrees,
+                'balance'       => $balance,
+                'dateDebut'     => $dateDebut,
+                'dateFin'       => $dateFin,
             ]);
     }
 }

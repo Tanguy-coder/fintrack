@@ -13,7 +13,7 @@
                         <form method="POST" class="form-horizontal" action="{{ route('sorties.store') }}" id="form">
                             {{-- {{ dd($typesSortie) }} --}}
                             @csrf
-                            <x-text-input label="user_id" name="user_id" status="success" value="1" type="hidden"/>
+                            <x-text-input label="user_id" name="user_id" status="success" value="{{ auth()->user()->id }}" type="hidden"/>
                             <x-text-input label="libelle" name="libelle" status="success" required="true"/>
                             <x-input-select label="Type d'operation" id="operation" name="type_operation" :options="$operation" :displayField="['libelle']" :selected="old('type_operation')" />
                             <x-input-select label="Type de Sortie" id="type_sortie_id" name="type_sortie_id" :options="$typesSortie"  :displayField="['numero_compte']" :selected="old('type_sortie_id')" />

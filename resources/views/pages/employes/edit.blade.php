@@ -20,7 +20,8 @@
                             <x-text-input label="Téléphone" name="telephone" status="success" required="true" value="{{ $employe->telephone }}"/>
                             <x-text-input label="Poste" name="poste" status="success" required="true" value="{{ $employe->poste }}"/>
                             <x-text-input label="Salaire" name="salaire" status="success" required="true" type="number" value="{{ $employe->salaire }}"/>
-                            <x-input-checkbox id="is_active" name="actif" checked="true" label="Status"/>
+                            <input type="hidden" name="actif" value="0">
+                            <x-input-checkbox id="is_active" name="actif" :checked="$employe->actif" label="Status"/>
 
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">

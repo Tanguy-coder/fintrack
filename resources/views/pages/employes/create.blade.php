@@ -15,7 +15,7 @@
                             <x-text-input label="Matricule" name="matricule" status="success" required="true"/>
                             <x-text-input label="Nom" name="nom" status="success" required="true"/>
                             <x-text-input label="Prénom" name="prenom" status="success" required="true"/>
-                            <x-text-input label="Email" name="email" type="email" status="success" />
+                            <x-text-input label="Email" name="email" type="email" status="success" :required="false" />
                             <x-text-input label="Téléphone" name="telephone" type="tel" status="success" required="true"/>
                             <x-text-input label="Poste" name="poste" status="success" required="true"/>
                             <x-text-input label="Salaire" name="salaire" status="success" required="true" type="number"/>

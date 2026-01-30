@@ -29,7 +29,7 @@ class SalaireRepository implements SalaireRepositoryInterface
 
     public function createSalaire(array $data)
     {
-
+        // dd($data);
         $token = Str::random(32) ?? null;
         $employes = Employe::where('actif', true)->get();
         for ($i=0; $i < count($employes); $i++) {
